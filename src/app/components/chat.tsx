@@ -3,11 +3,14 @@
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useChat } from "ai/react"
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 export function Chat() {
 
+    const [chatno, setChatno] = useState(1)
+
     const { messages, input, handleInputChange, handleSubmit } = useChat({
+        api: `api/ex${chatno}`,
         onError: (e) => {
             console.log(e)
         }
@@ -23,6 +26,13 @@ export function Chat() {
 
     return (
         <main className="flex flex-col w-full h-screen max-h-dvh bg-background">
+            <div className="grid grid-cols-5 gap-2">
+                <Button className={`${chatno==1 ? 'bg-rose-400' : 'bg-sky-400'}`} onClick={()=>setChatno(prev=>1)}>Chat</Button>
+                <Button className={`${chatno==2 ? 'bg-rose-400' : 'bg-sky-400'}`} onClick={()=>setChatno(prev=>2)}>Funny Chat</Button>
+                <Button className={`${chatno==3 ? 'bg-rose-400' : 'bg-sky-400'}`} onClick={()=>setChatno(prev=>3)}>Pirate Chat</Button>
+                <Button className={`${chatno==4 ? 'bg-rose-400' : 'bg-sky-400'}`} onClick={()=>setChatno(prev=>4)}>US Chat</Button>
+                <Button className={`${chatno==5 ? 'bg-rose-400' : 'bg-sky-400'}`} onClick={()=>setChatno(prev=>5)}>Memory Chat</Button>
+            </div>
 
             <header className="p-4 border-b w-full max-w-3xl mx-auto">
                 <h1 className="text-2xl font-bold">LangChain Chat</h1>

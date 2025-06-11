@@ -9,6 +9,9 @@ import { HttpResponseOutputParser } from 'langchain/output_parsers';
 
 export const dynamic = 'force-dynamic'
 
+const token = process.env.GITHUB_KEY;
+const endpoint = "https://models.github.ai/inference";
+
 /**
  * Basic memory formatter that stringifies and passes
  * message history directly into the model.
@@ -38,9 +41,12 @@ export async function POST(req: Request) {
         const prompt = PromptTemplate.fromTemplate(TEMPLATE);
 
         const model = new ChatOpenAI({
-            apiKey: process.env.OPENAI_API_KEY!,
-            model: 'gpt-3.5-turbo',
+            apiKey: token,
+            model: 'openai/gpt-4.1',
             temperature: 0.8,
+            configuration: {
+                baseURL: endpoint,
+            },          
         });
 
         /**
