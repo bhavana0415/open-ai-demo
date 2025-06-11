@@ -8,7 +8,6 @@ import { useRef, useEffect } from 'react'
 export function Chat() {
 
     const { messages, input, handleInputChange, handleSubmit } = useChat({
-        api: 'api/ex4',
         onError: (e) => {
             console.log(e)
         }

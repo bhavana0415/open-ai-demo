@@ -3,24 +3,22 @@ import { OpenAIStream, StreamingTextResponse } from 'ai';
 
 export const dynamic = 'force-dynamic'
 
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY!,
-});
+const token = process.env.GITHUB_KEY;
+const endpoint = "https://models.github.ai/inference";
+const model = "openai/gpt-4.1";
+
+const openai = new OpenAI({ baseURL: endpoint, apiKey: token });
 
 export async function POST(req: Request) {
-    // Extract the `messages` from the body of the request
     const { messages } = await req.json();
 
-    // Request the OpenAI API for the response based on the prompt
     const response = await openai.chat.completions.create({
-        model: 'gpt-3.5-turbo',
+        model,
         stream: true,
-        messages: messages,
+        messages,
     });
 
-    // Convert the response into a friendly text-stream
     const stream = OpenAIStream(response);
 
-    // Respond with the stream
     return new StreamingTextResponse(stream);
 }
