@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useChat } from "ai/react"
 import { useRef, useEffect, useState } from 'react'
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from "@/components/markdown"
 
 export function Chat() {
 
@@ -61,7 +61,7 @@ export function Chat() {
                             ) : (
                                 <li key={m.id} className="flex flex-row-reverse">
                                     <div className="rounded-xl p-4 bg-background shadow-md flex flex-col w-3/4">
-                                        <ReactMarkdown>{m.content}</ReactMarkdown>
+                                        <ReactMarkdown markdownContent={m.content} />
                                     </div>
                                 </li>
                             )}
