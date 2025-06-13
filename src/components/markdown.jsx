@@ -2,6 +2,7 @@ import React from "react";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
 
+// Language-specific Tailwind styles
 const langStyles = {
   html: "bg-pink-50 border-pink-400 text-pink-800",
   css: "bg-indigo-50 border-indigo-400 text-indigo-800",
@@ -53,6 +54,7 @@ const langStyles = {
   log: "bg-gray-50 border-gray-400 text-gray-800",
 };
 
+// Configure marked to use custom renderer
 marked.use({
   renderer: {
     code(code, infostring) {
@@ -66,7 +68,7 @@ marked.use({
 });
 
 function ReactMarkdown({ markdownContent }) {
-  const rawHTML = marked(markdownContent);
+  const rawHTML = marked.parse(markdownContent || "");
   const cleanHTML = DOMPurify.sanitize(rawHTML);
 
   return (
