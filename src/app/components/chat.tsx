@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import { useChat } from "ai/react"
 import { useRef, useEffect, useState } from 'react'
 import ReactMarkdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export function Chat() {
 
@@ -61,7 +63,29 @@ export function Chat() {
                             ) : (
                                 <li key={m.id} className="flex flex-row-reverse">
                                     <div className="rounded-xl p-4 bg-background shadow-md flex flex-col w-3/4">
-                                        <ReactMarkdown>{m.content}</ReactMarkdown>
+                                        <ReactMarkdown
+                                        // components={{
+                                        //     code({ className, children, ...rest }) {
+                                        //         const match = /language-(\w+)/.exec(className || "");
+                                        //         return match ? (
+                                        //             <SyntaxHighlighter
+                                        //                 PreTag="div"
+                                        //                 language={match[1]}
+                                        //                 style={dark}
+                                        //                 {...rest}
+                                        //             >
+                                        //                 {children}
+                                        //             </SyntaxHighlighter>
+                                        //         ) : (
+                                        //             <code {...rest} className={className}>
+                                        //                 {children}
+                                        //             </code>
+                                        //         );
+                                        //     },
+                                        // }}
+                                        >
+                                            {m.content}
+                                        </ReactMarkdown>
                                     </div>
                                 </li>
                             )}
