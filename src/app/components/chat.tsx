@@ -57,7 +57,7 @@ export function Chat() {
                             {m.role === 'user' ? (
                                 <li key={m.id} className="flex flex-row">
                                     <div className="rounded-xl p-4 bg-background shadow-md flex">
-                                        <p className="text-primary">{m.content}</p>
+                                        <pre className="text-primary">{m.content}</pre>
                                     </div>
                                 </li>
                             ) : (
