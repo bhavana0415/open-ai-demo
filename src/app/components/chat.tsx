@@ -26,13 +26,13 @@ export function Chat() {
     })
 
     return (
-        <main className="flex flex-col w-full h-screen max-h-dvh bg-background text-black">
+        <main className="flex flex-col w-full h-screen max-h-dvh bg-background">
             <div className="grid grid-cols-5 gap-2">
-                <Button className={`${chatno == 1 ? 'bg-rose-200 hover:bg-rose-400' : 'bg-sky-200 hover:bg-sky-400'}`} onClick={() => setChatno(prev => 1)}>Chat</Button>
-                <Button className={`${chatno == 2 ? 'bg-rose-200 hover:bg-rose-400' : 'bg-sky-200 hover:bg-sky-400'}`} onClick={() => setChatno(prev => 2)}>Joker</Button>
-                <Button className={`${chatno == 3 ? 'bg-rose-200 hover:bg-rose-400' : 'bg-sky-200 hover:bg-sky-400'}`} onClick={() => setChatno(prev => 3)}>Pirate</Button>
-                <Button className={`${chatno == 4 ? 'bg-rose-200 hover:bg-rose-400' : 'bg-sky-200 hover:bg-sky-400'}`} onClick={() => setChatno(prev => 4)}>US</Button>
-                <Button className={`${chatno == 5 ? 'bg-rose-200 hover:bg-rose-400' : 'bg-sky-200 hover:bg-sky-400'}`} onClick={() => setChatno(prev => 5)}>Memory</Button>
+                <Button className={`${chatno == 1 ? 'bg-rose-600 hover:bg-rose-800' : 'bg-sky-600 hover:bg-sky-800'}`} onClick={() => setChatno(prev => 1)}>Chat</Button>
+                <Button className={`${chatno == 2 ? 'bg-rose-600 hover:bg-rose-800' : 'bg-sky-600 hover:bg-sky-800'}`} onClick={() => setChatno(prev => 2)}>Joker</Button>
+                <Button className={`${chatno == 3 ? 'bg-rose-600 hover:bg-rose-800' : 'bg-sky-600 hover:bg-sky-800'}`} onClick={() => setChatno(prev => 3)}>Pirate</Button>
+                <Button className={`${chatno == 4 ? 'bg-rose-600 hover:bg-rose-800' : 'bg-sky-600 hover:bg-sky-800'}`} onClick={() => setChatno(prev => 4)}>US</Button>
+                <Button className={`${chatno == 5 ? 'bg-rose-600 hover:bg-rose-800' : 'bg-sky-600 hover:bg-sky-800'}`} onClick={() => setChatno(prev => 5)}>Memory</Button>
             </div>
 
             <header className="p-4 border-b w-full max-w-3xl mx-auto">
@@ -60,7 +60,7 @@ export function Chat() {
                                 </li>
                             ) : (
                                 <li key={m.id} className="flex flex-row-reverse">
-                                    <div className="rounded-xl p-4 bg-background shadow-md flex w-3/4">
+                                    <div className="rounded-xl p-4 bg-background shadow-md flex flex-col w-3/4">
                                         <ReactMarkdown>{m.content}</ReactMarkdown>
                                     </div>
                                 </li>
