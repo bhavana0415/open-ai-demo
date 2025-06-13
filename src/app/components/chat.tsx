@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useChat } from "ai/react"
 import { useRef, useEffect, useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 
 export function Chat() {
 
@@ -25,13 +26,13 @@ export function Chat() {
     })
 
     return (
-        <main className="flex flex-col w-full h-screen max-h-dvh bg-background">
+        <main className="flex flex-col w-full h-screen max-h-dvh bg-background text-black">
             <div className="grid grid-cols-5 gap-2">
-                <Button className={`${chatno == 1 ? 'bg-rose-200' : 'bg-sky-200'}`} onClick={() => setChatno(prev => 1)}>Chat</Button>
-                <Button className={`${chatno == 2 ? 'bg-rose-200' : 'bg-sky-200'}`} onClick={() => setChatno(prev => 2)}>Joker</Button>
-                <Button className={`${chatno == 3 ? 'bg-rose-200' : 'bg-sky-200'}`} onClick={() => setChatno(prev => 3)}>Pirate</Button>
-                <Button className={`${chatno == 4 ? 'bg-rose-200' : 'bg-sky-200'}`} onClick={() => setChatno(prev => 4)}>US</Button>
-                <Button className={`${chatno == 5 ? 'bg-rose-200' : 'bg-sky-200'}`} onClick={() => setChatno(prev => 5)}>Memory</Button>
+                <Button className={`${chatno == 1 ? 'bg-rose-200 hover:bg-rose-400' : 'bg-sky-200 hover:bg-sky-400'}`} onClick={() => setChatno(prev => 1)}>Chat</Button>
+                <Button className={`${chatno == 2 ? 'bg-rose-200 hover:bg-rose-400' : 'bg-sky-200 hover:bg-sky-400'}`} onClick={() => setChatno(prev => 2)}>Joker</Button>
+                <Button className={`${chatno == 3 ? 'bg-rose-200 hover:bg-rose-400' : 'bg-sky-200 hover:bg-sky-400'}`} onClick={() => setChatno(prev => 3)}>Pirate</Button>
+                <Button className={`${chatno == 4 ? 'bg-rose-200 hover:bg-rose-400' : 'bg-sky-200 hover:bg-sky-400'}`} onClick={() => setChatno(prev => 4)}>US</Button>
+                <Button className={`${chatno == 5 ? 'bg-rose-200 hover:bg-rose-400' : 'bg-sky-200 hover:bg-sky-400'}`} onClick={() => setChatno(prev => 5)}>Memory</Button>
             </div>
 
             <header className="p-4 border-b w-full max-w-3xl mx-auto">
@@ -60,7 +61,7 @@ export function Chat() {
                             ) : (
                                 <li key={m.id} className="flex flex-row-reverse">
                                     <div className="rounded-xl p-4 bg-background shadow-md flex w-3/4">
-                                        <p className="text-primary">{m.content}</p>
+                                        <ReactMarkdown>{m.content}</ReactMarkdown>
                                     </div>
                                 </li>
                             )}
